@@ -1,24 +1,24 @@
-name: Fuerza Bruta APK
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: Compilar APK Final
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Build with Buildozer
-        uses: ArtemSerebrennkov/buildozer-action@v1
+        # Cambiamos a la acción oficial de Josh Peak que es muy estable
+        uses: GearScrewdriver/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MiApp-Final
+          name: MiApp-Kivy
           path: bin/*.apk
+          
 
           
