@@ -1,22 +1,20 @@
-name: Compilar APK Final V3
-# Un comentario para forzar actualizacion: 12345
+name: Build-Final-APK
 on: [push, pull_request]
 
 jobs:
-  build:
+  build_job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Build with Buildozer
+      - name: Build
         uses: GearScrewdriver/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
-
-      - name: Upload artifact
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: MiApp-Kivy
+          name: MiAppKivy
           path: bin/*.apk
+          
           
