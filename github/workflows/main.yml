@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build with Buildozer
-  uses: ("GearScrewdriver/buildozer-action@v1")
+  uses: ("Gear_screwdriver/buildozer-action@v1")
         with:
           buildozer_version: master
           python_version: 3.11
