@@ -1,22 +1,24 @@
 name: Build APK
-on: [push] # Se activa cada vez que subes cambios
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
+      - uses: actions/checkout@v4
+
       - name: Build with Buildozer
+        # Aquí corregimos el nombre del autor (ArtemSerebrennkov)
         uses: ArtemSerebrennkov/buildozer-action@v1
         with:
           buildozer_version: master
-          command: buildozer android debug
-          repository_root: .
+          python_version: 3.11
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
+      - name: Upload artifact
+        # Aquí usamos la versión v4 (la v2 que tenías está obsoleta)
+        uses: actions/upload-artifact@v4
         with:
-          name: package
+          name: MiAppKivy
           path: bin/*.apk
+          
 
