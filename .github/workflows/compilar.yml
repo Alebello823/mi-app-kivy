@@ -1,20 +1,23 @@
-name: Build-Final-APK
+name: Build-Samsung-Final
 on: [push, pull_request]
 
 jobs:
-  build_job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build
+
+      - name: Build with Buildozer
         uses: GearScrewdriver/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
-      - name: Upload
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MiAppKivy
+          name: MiApp-Kivy-Final
           path: bin/*.apk
+          
           
           
