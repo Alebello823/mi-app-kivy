@@ -1,5 +1,10 @@
-name: Compilar APK
-on: [push, pull_request]
+name: Fuerza Bruta APK
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +18,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MiApp
+          name: MiApp-Final
           path: bin/*.apk
+
           
